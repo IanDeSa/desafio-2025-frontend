@@ -1,54 +1,35 @@
-# React + TypeScript + Vite
+# Desafio 2025 - Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Este é o repositório do frontend da aplicação **Desafio 2025**. A aplicação é uma interface web desenvolvida para interagir com o backend, oferecendo uma experiência amigável e responsiva.
 
-Currently, two official plugins are available:
+## Funcionalidades
+- Interface intuitiva para os usuários.
+- Integração com o backend para exibição e manipulação de dados.
+- Design responsivo para diferentes dispositivos.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Como executar a aplicação
 
-## Expanding the ESLint configuration
+### Via Terminal
+1. Certifique-se de ter o Node.js instalado.
+2. No terminal, navegue até o diretório do projeto.
+3. Instale as dependências:
+  ```bash
+  npm install
+  ```
+4. Inicie o servidor de desenvolvimento:
+  ```bash
+  npm start
+  ```
+5. Acesse a aplicação em `http://localhost:3000`.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## Estrutura do Projeto
+- `src/`: Código-fonte da aplicação.
+- `public/`: Arquivos estáticos.
+- `Dockerfile`: Configuração para container Docker.
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+## Requisitos
+- Node.js v16+ (para execução via terminal).
+- Docker (opcional, para execução via container).
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
-```
+## Contribuição
+Contribuições são bem-vindas! Sinta-se à vontade para abrir issues ou enviar pull requests.
