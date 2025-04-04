@@ -5,15 +5,20 @@ import { TextField, Button, Typography, Box, Container, Paper, CircularProgress 
 import schema from './schema';
 import { LoginType } from './types';
 import { useLogin } from './hooks/query';
+import { Link, useNavigate } from 'react-router-dom';
 
 const LoginView: React.FC = () => {
-  const { mutate, isPending } = useLogin();
+  const navigate = useNavigate();
+  const { mutateAsync, isPending } = useLogin();
   const { register, handleSubmit, formState: { errors } } = useForm<LoginType>({
     resolver: yupResolver(schema),
   });
 
-  const onSubmit = (data: LoginType) => {
-    mutate(data);
+  const onSubmit = async (data: LoginType) => {
+    const response = await mutateAsync(data);
+    if (response) {
+      navigate('/home');
+    }
   };
 
   return (
@@ -49,6 +54,12 @@ const LoginView: React.FC = () => {
               {isPending ? <CircularProgress size={24} /> : 'Login'}
             </Button>
           </Box>
+          <Box textAlign="center" marginTop={2}>
+            <Typography variant="body2">
+            Don't have an account?{' '}
+            <Link to="/register">Sign up</Link>
+            </Typography>
+        </Box>
         </form>
       </Paper>
     </Container>

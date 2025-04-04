@@ -12,10 +12,11 @@ export const useLogin = () => {
   return useMutation({
     mutationFn: loginUser,
     mutationKey: ['auth'],
-    onSuccess: (data: string) => {
+    onSuccess: (data: string, variables: LoginType) => {
         console.log('Login successful:', data);
         toast.success('Login successful! Redirecting...');
         localStorage.setItem('token', data);
+        localStorage.setItem('emailLogged', variables.email);
       },
       onError: (error) => {
         console.error('Login error:', error);
