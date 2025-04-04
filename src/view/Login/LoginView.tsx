@@ -1,17 +1,19 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { TextField, Button, Typography, Box, Container, Paper } from '@mui/material';
+import { TextField, Button, Typography, Box, Container, Paper, CircularProgress } from '@mui/material';
 import schema from './schema';
 import { LoginType } from './types';
+import { useLogin } from './hooks/query';
 
 const LoginView: React.FC = () => {
+  const { mutate, isPending } = useLogin();
   const { register, handleSubmit, formState: { errors } } = useForm<LoginType>({
     resolver: yupResolver(schema),
   });
 
   const onSubmit = (data: LoginType) => {
-    console.log('Login realizado com sucesso:', data);
+    mutate(data);
   };
 
   return (
@@ -44,7 +46,7 @@ const LoginView: React.FC = () => {
 
           <Box textAlign="center" marginTop={2}>
             <Button type="submit" variant="contained" color="primary" fullWidth>
-              Login
+              {isPending ? <CircularProgress size={24} /> : 'Login'}
             </Button>
           </Box>
         </form>
